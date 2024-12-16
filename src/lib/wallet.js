@@ -70,6 +70,10 @@ class Wallet extends EventEmitter {
     this.pay.set(k, assetObj)
   }
 
+  setAddressbook(addressbook) {
+    this.addressbook = addressbook;
+  }
+
   async _sync (opts, asset) {
     await asset.syncTransactions(opts)
     this.emit('asset-synced', asset.assetName)
