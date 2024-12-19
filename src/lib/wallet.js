@@ -51,6 +51,7 @@ class Wallet extends EventEmitter {
     this.seed = config.seed
     this.store = config.store
     this._assets = config.assets
+    this.addressbook = config.addressbook ?? null
     this.walletName = config.name || randomBytes(32).toString('hex')
   }
 
@@ -93,6 +94,10 @@ class Wallet extends EventEmitter {
       return this._initAsset(k)
     }
     this.pay.set(k, assetObj)
+  }
+
+  setAddressbook(addressbook) {
+    this.addressbook = addressbook
   }
 
   async _sync (opts, asset) {
